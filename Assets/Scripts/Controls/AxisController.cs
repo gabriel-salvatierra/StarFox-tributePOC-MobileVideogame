@@ -1,18 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class AxisController : MonoBehaviour
+public class AxisController : Controller, IDragHandler, IEndDragHandler
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private float _maxDistance = 15f;
+    private Vector3 _initialPos;
+    private Vector3 _dir;
+
+    private void Start()
     {
-        
+        _initialPos = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override Vector3 GetMovementInput()
     {
-        
+        // Remap Y on Z
+        _moveDir = new Vector3(_dir.x, 0f, _dir.y);
+        return _moveDir;
     }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        _dir = (Vector3)eventData.position - _initialPos;
+        transform.position = _initialPos + Vector3.ClampMagnitude(_dir, _maxDistance);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        transform.position = _initialPos;
+        _dir = Vector3.zero;
+    }
+
 }
