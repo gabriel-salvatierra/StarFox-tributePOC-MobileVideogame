@@ -12,38 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"e935e2f1-a022-41c0-a850-6b4f58d5a591\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"7e272ff3-8584-41dc-8b45-a3e665ecca86\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"PlayerLife\",\r\n      \"type\": \"int\",\r\n     
     \"value\": 100\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"88989ce4-8db0-4d64-b867-b85a8d84fe59\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"042ff464-37c3-4158-8949-109cc9951209\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"HasTwinBlaster\",\r\n      \"type\": \"bool\",\r\n      \"value\":
-    false\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"f68c9fcd-a6cb-4a32-a882-3ca4e0e7a28f\"\r\n   
+    false\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"43d65a63-11ad-411d-b91f-6de3bb6c88c6\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"EnemyLife\",\r\n      \"type\": \"int\",\r\n     
     \"value\": 10\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"95654857-72b3-473d-8569-211f36f61f15\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"4a694a63-a6c0-4d4e-b93a-1916b0566213\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"BossLife\",\r\n      \"type\": \"int\",\r\n      \"value\": 1000\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"f41bbbdc-52d0-4aa3-8e19-97dac2219fb3\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"79809391-7089-4b43-a63b-26293d975d26\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"TwinBlasterDamage\",\r\n      \"type\":
     \"int\",\r\n      \"value\": 50\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
-    {\r\n      \"entityId\": \"ebc01460-e0db-4866-abb7-e7738393f7e2\"\r\n    },\r\n   
+    {\r\n      \"entityId\": \"cc4c33cf-f2c2-40d9-83dd-71d4284fff14\"\r\n    },\r\n   
     \"rs\": {\r\n      \"key\": \"HasBoost\",\r\n      \"type\": \"bool\",\r\n     
-    \"value\": true\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"e935e2f1-a022-41c0-a850-6b4f58d5a591\"\r\n   
+    \"value\": true\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"bf63e6e6-c534-4702-a931-674430ed483a\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TestMode\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
+    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"7e272ff3-8584-41dc-8b45-a3e665ecca86\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"PlayerLife\",\r\n      \"type\": \"int\",\r\n     
     \"value\": 100\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"88989ce4-8db0-4d64-b867-b85a8d84fe59\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"042ff464-37c3-4158-8949-109cc9951209\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"HasTwinBlaster\",\r\n      \"type\": \"bool\",\r\n      \"value\":
-    false\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"f68c9fcd-a6cb-4a32-a882-3ca4e0e7a28f\"\r\n   
+    false\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"43d65a63-11ad-411d-b91f-6de3bb6c88c6\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"EnemyLife\",\r\n      \"type\": \"int\",\r\n     
     \"value\": 10\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"95654857-72b3-473d-8569-211f36f61f15\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"4a694a63-a6c0-4d4e-b93a-1916b0566213\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"BossLife\",\r\n      \"type\": \"int\",\r\n      \"value\": 1000\r\n   
-    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"f41bbbdc-52d0-4aa3-8e19-97dac2219fb3\"\r\n   
+    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"79809391-7089-4b43-a63b-26293d975d26\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"TwinBlasterDamage\",\r\n      \"type\":
     \"int\",\r\n      \"value\": 50\r\n    }\r\n  },\r\n  {\r\n    \"metadata\":
-    {\r\n      \"entityId\": \"ebc01460-e0db-4866-abb7-e7738393f7e2\"\r\n    },\r\n   
+    {\r\n      \"entityId\": \"cc4c33cf-f2c2-40d9-83dd-71d4284fff14\"\r\n    },\r\n   
     \"rs\": {\r\n      \"key\": \"HasBoost\",\r\n      \"type\": \"bool\",\r\n     
-    \"value\": true\r\n    }\r\n  }\r\n]"
+    \"value\": true\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
+    \"bf63e6e6-c534-4702-a931-674430ed483a\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"key\": \"TestMode\",\r\n      \"type\": \"bool\",\r\n      \"value\": true\r\n   
+    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"57d5c2d3-773c-4b63-be44-a99a5562c5c7\",\r\n   
     \"name\": \"production\",\r\n    \"id\": \"b8ca2fe9-2218-4edd-940f-e25a24489a73\",\r\n   
     \"isDefault\": true,\r\n    \"createdAt\": \"2025-12-02T21:53:39Z\",\r\n    \"updatedAt\":
