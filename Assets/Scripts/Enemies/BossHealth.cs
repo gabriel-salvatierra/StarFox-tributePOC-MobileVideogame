@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static MusicManager;
@@ -15,7 +14,7 @@ public class BossHealth : MonoBehaviour
 
     [Header("On Defeat")]
     private const string _sceneOnDefeat = "Main Menu";
-    [SerializeField] private float _nextSceneDelay = 5f;
+    [SerializeField] private float _nextSceneDelay = 15f;
 
     [Header("Flash Effect")]
     [SerializeField] private Renderer enemyRenderer;
@@ -82,10 +81,12 @@ public class BossHealth : MonoBehaviour
         MusicManager.Instance.PlayTrack(MusicTrack.LevelClear);
 
         // Destroy boss object; TO DO explosion
-        Destroy(gameObject);
+        enemyRenderer.enabled = false;
 
         yield return new WaitForSeconds(_nextSceneDelay);
 
         SceneManager.LoadScene(_sceneOnDefeat);
+    
+        Destroy(gameObject);
     }
 }

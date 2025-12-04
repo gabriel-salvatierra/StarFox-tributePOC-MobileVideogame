@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,10 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject _currencyIndicator;
     [SerializeField] private GameObject _staminaIndicator;
 
+    [Header("Currency and Stamina")]
+    [SerializeField] TextMeshProUGUI _currencyAmountValue;
+    [SerializeField] TextMeshProUGUI _staminaIndicatorValue;
+
     public void Pause()
     {
         SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
@@ -24,6 +29,22 @@ public class PauseMenu : MonoBehaviour
 
         _pauseButton.SetActive(false);
         _soundPanel.SetActive(false);
+
+        UpdateCurrencyAmount();
+        UpdateStaminaAmount();
+    }
+
+    public void UpdateCurrencyAmount()
+    {
+        int value = GameManager.Instance.GetCurrencyAmount();
+        _currencyAmountValue.text = value.ToString();
+    }
+
+    public void UpdateStaminaAmount()
+    {
+        int actualStamina = GameManager.Instance.GetStaminaAmount();
+        int maxStamina = GameManager.Instance.GetMaxStaminaAmount();
+        _staminaIndicatorValue.text = actualStamina.ToString() + "/" + maxStamina.ToString();
     }
 
     public void Resume()

@@ -7,15 +7,15 @@ public class StaminaIndicator : MonoBehaviour
 
     void Start()
     {
-        UpdateCurrencyAmount();
+        UpdateStaminaAmount();
     }
 
     void Update()
     {
-        UpdateCurrencyAmount();
+        UpdateStaminaAmount();
     }
 
-    public void UpdateCurrencyAmount()
+    public void UpdateStaminaAmount()
     {
         int actualStamina = GameManager.Instance.GetStaminaAmount();
         int maxStamina = GameManager.Instance.GetMaxStaminaAmount();

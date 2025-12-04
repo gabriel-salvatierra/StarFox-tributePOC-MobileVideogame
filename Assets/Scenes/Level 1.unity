@@ -3684,6 +3684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  _currencyOnDefeat: 7
   enemyRenderer: {fileID: 1477320993}
   flashDuration: 0.1
 --- !u!1001 &565824648
@@ -5045,6 +5046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  _currencyOnDefeat: 7
   enemyRenderer: {fileID: 376576366}
   flashDuration: 0.1
 --- !u!1001 &823030512
@@ -5283,6 +5285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  _currencyOnDefeat: 7
   enemyRenderer: {fileID: 242111956}
   flashDuration: 0.1
 --- !u!1 &843352758
@@ -5586,6 +5589,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+  _currencyOnDefeat: 15
+  _nextSceneDelay: 5
   enemyRenderer: {fileID: 2072819507}
   flashDuration: 0.1
   missionCompleteUI: {fileID: 1475543137}
@@ -5742,6 +5747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  _currencyOnDefeat: 7
   enemyRenderer: {fileID: 1954847212}
   flashDuration: 0.1
 --- !u!54 &902001159
@@ -6292,6 +6298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  _currencyOnDefeat: 7
   enemyRenderer: {fileID: 1807439038}
   flashDuration: 0.1
 --- !u!54 &986610071
@@ -7273,6 +7280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  _currencyOnDefeat: 7
   enemyRenderer: {fileID: 565824650}
   flashDuration: 0.1
 --- !u!54 &1265503444
@@ -7508,6 +7516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  _currencyOnDefeat: 7
   enemyRenderer: {fileID: 1310274552}
   flashDuration: 0.1
 --- !u!54 &1296300052
@@ -7759,6 +7768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  _currencyOnDefeat: 7
   enemyRenderer: {fileID: 1693596392}
   flashDuration: 0.1
 --- !u!54 &1389723125
@@ -10332,6 +10342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  _currencyOnDefeat: 7
   enemyRenderer: {fileID: 1357716919}
   flashDuration: 0.1
 --- !u!1001 &1735964521
@@ -18071,6 +18082,8 @@ MonoBehaviour:
   _soundPanel: {fileID: 2111649090327174464}
   _currencyIndicator: {fileID: 4120266952387196749}
   _staminaIndicator: {fileID: 3711119027297190625}
+  _currencyAmountValue: {fileID: 2918726713843181405}
+  _staminaIndicatorValue: {fileID: 6633411513429969357}
 --- !u!114 &6419961371073745209
 MonoBehaviour:
   m_ObjectHideFlags: 0

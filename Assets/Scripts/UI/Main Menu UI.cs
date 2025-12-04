@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,9 @@ public class MainMenuUI : MonoBehaviour
 
     [Header("Level Indexes")]
     [SerializeField] private int _level1 = 2;
+    [SerializeField] private TextMeshProUGUI _level1Stamina;
     [SerializeField] private int _level2 = 3;
+    [SerializeField] private TextMeshProUGUI _level2Stamina;
 
     [Header("Game Values Button")]
     [SerializeField] private GameObject _restoreGameValuesButton;
@@ -22,12 +25,13 @@ public class MainMenuUI : MonoBehaviour
         CheckGameValuesButton();
     }
 
-  public void CheckGameValuesButton()
+    public void CheckGameValuesButton()
     {
         if (GameManager.Instance.GetShowRestoreGameValues())
         {
             _restoreGameValuesButton.SetActive(true);
-        } else
+        }
+        else
         {
             _restoreGameValuesButton.SetActive(false);
         }
@@ -37,14 +41,20 @@ public class MainMenuUI : MonoBehaviour
     {
         SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck);
         SceneManager.LoadScene(_level1);
-        GameManager.Instance.RestoreGameValues();
+        if (int.TryParse(_level1Stamina.text, out int staminaConsumption))
+        {
+            GameManager.Instance.ModifyStaminaAmount(-staminaConsumption);
+        }
     }
 
     public void PlayLevel2()
     {
         SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck);
         SceneManager.LoadScene(_level2);
-        GameManager.Instance.RestoreGameValues();
+        if (int.TryParse(_level2Stamina.text, out int staminaConsumption))
+        {
+            GameManager.Instance.ModifyStaminaAmount(-staminaConsumption);
+        }
     }
 
     public void ShowMainMenu()
