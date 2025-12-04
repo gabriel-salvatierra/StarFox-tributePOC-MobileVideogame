@@ -7,6 +7,9 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     private int currentHealth;
 
+    [Header("Currency Value")]
+    [SerializeField] private int _currencyOnDefeat = 7;
+
     [Header("Flash Effect")]
     [SerializeField] private Renderer enemyRenderer;
     [SerializeField] private float flashDuration = 0.1f;
@@ -53,6 +56,8 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         // TO DO: explosion
+        GameManager.Instance.ModifyCurrencyAmount(_currencyOnDefeat);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.Explosion);
         Destroy(gameObject);
     }
 }
