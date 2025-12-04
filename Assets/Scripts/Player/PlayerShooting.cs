@@ -38,7 +38,7 @@ public class PlayerShooting : MonoBehaviour
 
     public void Fire()
     {
-        if (_doubleLasers)
+        if (GameManager.Instance.HasTwinBlasterTypeA())
         {
             SpawnLaser(_muzzle.position + transform.right * _sideOffset);
             SpawnLaser(_muzzle.position - transform.right * _sideOffset);

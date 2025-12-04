@@ -13,23 +13,28 @@ public class GameManager : MonoBehaviour
     public int SelectedSkin { get; private set; }
 
 
-    // Para pasar info entre escenas
+    [Header("Game Values")]
     [SerializeField] static int _initalLives = 3;
     [SerializeField] static int _actualLives = 3;
     [SerializeField] static int _currencyAmount;
     [SerializeField] static int _staminaAmount;
     [SerializeField] static int _maxStaminaAmount;
-    //defaults
+    [Header("Defaults")]
     [SerializeField] static int _currencyDefault = 0;
     [SerializeField] static int _staminaDefault = 10;
     [SerializeField] static int _maxStaminaDefault = 10;
     [SerializeField] static bool _showRestoreGameValues = true;
 
+    [Header("Shop")]
+    [SerializeField] private bool _hasTwinBlasterTypeA = false;
+    [SerializeField] private bool _hasForceshield = false;
 
     // Keys para PlayerPrefs
     private const string CurrencyKey = "Currency";
     private const string StaminaKey = "Stamina";
     private const string MaxStaminaKey = "MaxStamina";
+    private const string TwinBlasterTypeA = "TwinBlasterTypeA";
+    private const string Forceshield = "Forceshield";
 
     // SceneManagement
     [SerializeField] string _sceneAfterGameOver = "SplashScreen";
@@ -68,6 +73,8 @@ public class GameManager : MonoBehaviour
             _currencyAmount = PlayerPrefs.GetInt(CurrencyKey, _currencyDefault);
             _staminaAmount = PlayerPrefs.GetInt(StaminaKey, _staminaDefault);
             _maxStaminaAmount = PlayerPrefs.GetInt(MaxStaminaKey, _maxStaminaDefault);
+            _hasTwinBlasterTypeA = PlayerPrefs.GetInt(TwinBlasterTypeA, 0) == 1;
+            _hasForceshield = PlayerPrefs.GetInt(Forceshield, 0) == 1;
         }
     }
 
@@ -89,6 +96,8 @@ public class GameManager : MonoBehaviour
     public int GetStaminaAmount() { return _staminaAmount; }
     public int GetMaxStaminaAmount() { return _maxStaminaAmount; }
     public bool GetShowRestoreGameValues() { return _showRestoreGameValues; }
+    public bool HasTwinBlasterTypeA() { return _hasTwinBlasterTypeA; }
+    public bool HasForceshield() { return _hasForceshield; }
 
 
     /*public void ModifyLivesAmount(int amount)
@@ -119,6 +128,34 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void UnlockTwinBlasterTypeA()
+    {
+        _hasTwinBlasterTypeA = true;
+        PlayerPrefs.SetInt(TwinBlasterTypeA, 1);
+        PlayerPrefs.Save();
+    }
+
+    public void DisableTwinBlasterTypeA()
+    {
+        _hasTwinBlasterTypeA = false;
+        PlayerPrefs.SetInt(TwinBlasterTypeA, 0);
+        PlayerPrefs.Save();
+    }
+
+    public void UnlockForceshield()
+    {
+        _hasForceshield = true;
+        PlayerPrefs.SetInt(Forceshield, 1);
+        PlayerPrefs.Save();
+    }
+
+    public void DisableForceshield()
+    {
+        _hasForceshield = false;
+        PlayerPrefs.SetInt(Forceshield, 0);
+        PlayerPrefs.Save();
+    }
+
     public void RestoreGameValues()
     {
         Debug.Log("Game values set to default");
@@ -127,6 +164,8 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.SetInt(CurrencyKey, _currencyAmount);
         PlayerPrefs.SetInt(StaminaKey, _staminaAmount);
+        DisableTwinBlasterTypeA();
+        DisableForceshield();
         PlayerPrefs.Save();
     }
 
