@@ -1454,6 +1454,18 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6249441993646797865, guid: 72d491500b0f9754e85be2aedbed91c4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bd1224c24dbef24f99620ac301ce9ba,
+        type: 3}
+    - target: {fileID: 6824310521211809764, guid: 72d491500b0f9754e85be2aedbed91c4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5c7b89fb7e3201f4da2272aa1e3826ae,
+        type: 3}
     - target: {fileID: 7476812287428896739, guid: 72d491500b0f9754e85be2aedbed91c4,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1613,6 +1625,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7982341116292674053, guid: 72d491500b0f9754e85be2aedbed91c4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5781412
+      objectReference: {fileID: 0}
+    - target: {fileID: 7982341116292674053, guid: 72d491500b0f9754e85be2aedbed91c4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5781412
+      objectReference: {fileID: 0}
+    - target: {fileID: 7982341116292674053, guid: 72d491500b0f9754e85be2aedbed91c4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5781412
       objectReference: {fileID: 0}
     - target: {fileID: 8129644330429051857, guid: 72d491500b0f9754e85be2aedbed91c4,
         type: 3}
