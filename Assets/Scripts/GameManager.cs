@@ -16,13 +16,23 @@ public class GameManager : MonoBehaviour
     // Para pasar info entre escenas
     [SerializeField] static int _initalLives = 3;
     [SerializeField] static int _actualLives = 3;
-    [SerializeField] static int _initialCollectibles = 0;
-    [SerializeField] static int _actualCollectibles = 0; // TODO a ser implementado
+    [SerializeField] static int _currencyAmount;
+    [SerializeField] static int _staminaAmount; 
+    [SerializeField] static int _maxStaminaAmount;
+    //defaults
+    [SerializeField] static int _currencyDefault = 0;
+    [SerializeField] static int _staminaDefault = 10;
+    [SerializeField] static int _maxStaminaDefault = 10;
+
+    // Keys para PlayerPrefs
+    private const string CurrencyKey = "Currency";
+    private const string StaminaKey = "Stamina";
+    private const string MaxStaminaKey = "MaxStamina";
 
     // SceneManagement
     [SerializeField] string _sceneAfterGameOver = "SplashScreen";
 
-    public static GameManager Instance 
+    public static GameManager Instance
     {
         get
         {
@@ -52,6 +62,10 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             SelectedSkin = PlayerPrefs.GetInt("SelectedSkin", 1); // skin default
+                                                                  // Load persistent values OR defaults
+            _currencyAmount = PlayerPrefs.GetInt(CurrencyKey, _currencyDefault);
+            _staminaAmount = PlayerPrefs.GetInt(StaminaKey, _staminaDefault);
+            _maxStaminaAmount = PlayerPrefs.GetInt(MaxStaminaKey, _maxStaminaDefault);
         }
     }
 
@@ -68,10 +82,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int GetLivesAmount() { return _actualLives; }
+    //public int GetLivesAmount() { return _actualLives; }
+    public int GetCurrencyAmount() { return _currencyAmount; }
+    public int GetStaminaAmount() { return _staminaAmount; }
+    public int GetMaxStaminaAmount() { return _maxStaminaAmount; }
 
 
-    public void ModifyLivesAmount(int amount)
+    /*public void ModifyLivesAmount(int amount)
     {
         if (amount > 0)
         {
@@ -83,18 +100,30 @@ public class GameManager : MonoBehaviour
             var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentSceneIndex);
         }
+    }*/
+
+    public void ModifyCurrencyAmount(int amount)
+    {
+        _currencyAmount += amount;
+        PlayerPrefs.SetInt(CurrencyKey, _currencyAmount);
+        PlayerPrefs.Save();
     }
 
-    public int GetCollectiblesAmount() { return _initialCollectibles; }
-
-    public void ModifyCollectiblesAmount(int amount)
+    public void ModifyStaminaAmount(int amount)
     {
-        _initialCollectibles += amount;
+        _staminaAmount = Mathf.Clamp(_staminaAmount + amount, 0, _maxStaminaAmount);
+        PlayerPrefs.SetInt(StaminaKey, _staminaAmount);
+        PlayerPrefs.Save();
     }
 
     public void RestoreGameValues()
     {
-        _actualLives = _initalLives;
+        _currencyAmount = 0;
+        _staminaAmount = _maxStaminaAmount;
+
+        PlayerPrefs.SetInt(CurrencyKey, _currencyAmount);
+        PlayerPrefs.SetInt(StaminaKey, _staminaAmount);
+        PlayerPrefs.Save();
     }
 
     public void LoadNextScene(int buildIndex)
