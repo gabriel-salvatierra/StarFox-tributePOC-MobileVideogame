@@ -1,8 +1,14 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
+    [Header("Navigation")]
+    [SerializeField] private Image _nextLevelImageButton;
+    private const string _mainMenuSceneName = "Main Menu";
+
     [Header("Prices")]
     [SerializeField] TextMeshProUGUI _twinBlasterTypeA;
     [SerializeField] TextMeshProUGUI _forceShield;
@@ -84,5 +90,23 @@ public class ShopUI : MonoBehaviour
         }
     }
 
+    public void NextMission()
+    {
+        if (_gameManager.GetStaminaAmount() > 0)
+        {
+            SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+            _gameManager.ModifyStaminaAmount(-1);
+        }
+        else
+        {
+            _nextLevelImageButton.color = Color.black;
+        }
+    }
+
+    public void LoadMainMenu()
+    {
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+        SceneManager.LoadScene(_mainMenuSceneName);
+    }
 
 }

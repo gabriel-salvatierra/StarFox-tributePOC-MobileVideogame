@@ -13,7 +13,7 @@ public class BossHealth : MonoBehaviour
     [SerializeField] private int _currencyOnDefeat = 15;
 
     [Header("On Defeat")]
-    private const string _sceneOnDefeat = "Main Menu";
+    private const string _sceneOnDefeat = "Shop";
     [SerializeField] private float _nextSceneDelay = 15f;
 
     [Header("Flash Effect")]

@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     // SceneManagement
     [SerializeField] string _sceneAfterGameOver = "SplashScreen";
+    [SerializeField] private int _nextLevelAfterShop;
 
     public static GameManager Instance
     {
@@ -68,14 +69,24 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
 
-            SelectedSkin = PlayerPrefs.GetInt("SelectedSkin", 1); // skin default
-                                                                  // Load persistent values OR defaults
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
             _currencyAmount = PlayerPrefs.GetInt(CurrencyKey, _currencyDefault);
             _staminaAmount = PlayerPrefs.GetInt(StaminaKey, _staminaDefault);
             _maxStaminaAmount = PlayerPrefs.GetInt(MaxStaminaKey, _maxStaminaDefault);
             _hasTwinBlasterTypeA = PlayerPrefs.GetInt(TwinBlasterTypeA, 0) == 1;
             _hasForceshield = PlayerPrefs.GetInt(Forceshield, 0) == 1;
         }
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SetNextLevelAfterShop();
     }
 
     public void ProcessPlayerDeath(int num)
@@ -99,20 +110,10 @@ public class GameManager : MonoBehaviour
     public bool HasTwinBlasterTypeA() { return _hasTwinBlasterTypeA; }
     public bool HasForceshield() { return _hasForceshield; }
 
-
-    /*public void ModifyLivesAmount(int amount)
+    public void SetNextLevelAfterShop()
     {
-        if (amount > 0)
-        {
-            _actualLives++;
-        }
-        else
-        {
-            _actualLives--;
-            var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentSceneIndex);
-        }
-    }*/
+        _nextLevelAfterShop = SceneManager.GetActiveScene().buildIndex + 1;
+    }
 
     public void ModifyCurrencyAmount(int amount)
     {
