@@ -1105,6 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb19a9a1cdf59b4aa8f201958fac496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nextLevelImageButton: {fileID: 0}
   _twinBlasterTypeA: {fileID: 1271085345}
   _forceShield: {fileID: 2016064444}
   _twinBlasterTypeAPanel: {fileID: 2003442119}
@@ -1418,6 +1419,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475685730081994008, guid: 72d491500b0f9754e85be2aedbed91c4,
+        type: 3}
+      propertyPath: _level1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475685730081994008, guid: 72d491500b0f9754e85be2aedbed91c4,
+        type: 3}
+      propertyPath: _level2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4651333389606341233, guid: 72d491500b0f9754e85be2aedbed91c4,
         type: 3}
