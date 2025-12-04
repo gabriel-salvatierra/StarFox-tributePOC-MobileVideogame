@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    [Header("Main Menu")]
+    private const string _mainMenuSceneName = "Main Menu";
+
     [Header("Panels")]
     [SerializeField] private GameObject _pauseButton;
     [SerializeField] private GameObject _pauseMenuPanel;
@@ -42,6 +45,12 @@ public class PauseMenu : MonoBehaviour
         _pauseMenuPanel.SetActive(false);
         _currencyIndicator.SetActive(false);
         _staminaIndicator.SetActive(false);
+    }
+
+    public void LoadMainMenu()
+    {
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+        SceneManager.LoadScene(_mainMenuSceneName);
     }
 
     public void QuitGame()
