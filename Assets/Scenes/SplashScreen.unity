@@ -660,6 +660,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 1618150319093734710, guid: ac2d3eb0d0754954bbca96e39d0450b0,
+        type: 3}
+      propertyPath: trackClips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618150319093734710, guid: ac2d3eb0d0754954bbca96e39d0450b0,
+        type: 3}
+      propertyPath: trackClips.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1a2a310d99d1a794b963db3cfac24a9d, type: 3}
+    - target: {fileID: 1618150319093734710, guid: ac2d3eb0d0754954bbca96e39d0450b0,
+        type: 3}
+      propertyPath: trackClips.Array.data[4].track
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5403094116748814093, guid: ac2d3eb0d0754954bbca96e39d0450b0,
         type: 3}
       propertyPath: m_LocalPosition.x

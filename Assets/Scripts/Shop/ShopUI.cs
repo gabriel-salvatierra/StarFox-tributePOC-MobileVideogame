@@ -96,6 +96,7 @@ public class ShopUI : MonoBehaviour
         {
             SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
             _gameManager.ModifyStaminaAmount(-1);
+            SceneManager.LoadScene(_gameManager.GetNextLevelAfterShop());
         }
         else
         {

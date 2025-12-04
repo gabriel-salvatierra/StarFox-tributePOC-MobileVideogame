@@ -12,6 +12,7 @@ public class MusicManager : MonoBehaviour
         Level1,
         Level2,
         LevelClear,
+        Shop
     }
 
     // Pair a track enum with an AudioClip
@@ -87,6 +88,9 @@ public class MusicManager : MonoBehaviour
                 break;
             case "Level Clear":
                 PlayTrack(MusicTrack.LevelClear);
+                break;
+            case "Shop":
+                PlayTrack(MusicTrack.Shop);
                 break;
             default:
                 FadeOutAndStop(0.5f);
