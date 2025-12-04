@@ -19,8 +19,11 @@ public class MainMenuUI : MonoBehaviour
     [Header("Game Values Button")]
     [SerializeField] private GameObject _restoreGameValuesButton;
 
+    private ShopUI _shopUI;
+
     void Start()
     {
+        _shopUI = GetComponent<ShopUI>();
         ShowMainMenu();
         CheckGameValuesButton();
     }
@@ -94,6 +97,9 @@ public class MainMenuUI : MonoBehaviour
         _levelSelectPanel.SetActive(false);
         _mainMenuPanel.SetActive(false);
         _soundPanel.SetActive(false);
+
+        _shopUI.CheckTwinBlasterTypeA();
+        _shopUI.CheckForceshield();
     }
 
     public void ShowSoundPanel()

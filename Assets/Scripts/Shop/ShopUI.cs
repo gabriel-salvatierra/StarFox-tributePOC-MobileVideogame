@@ -36,6 +36,8 @@ public class ShopUI : MonoBehaviour
 
             _twinBlasterTypeAPanel.SetActive(true);
             _twinBlasterTypeAButton.SetActive(false);
+
+            SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck);
         }
     }
 
@@ -49,10 +51,12 @@ public class ShopUI : MonoBehaviour
 
             _forceshieldPanel.SetActive(true);
             _forceshieldButton.SetActive(false);
+
+            SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck);
         }
     }
 
-    private void CheckTwinBlasterTypeA()
+    public void CheckTwinBlasterTypeA()
     {
         if (_gameManager.HasTwinBlasterTypeA())
         {
@@ -66,7 +70,7 @@ public class ShopUI : MonoBehaviour
         }
     }
 
-    private void CheckForceshield()
+    public void CheckForceshield()
     {
         if (_gameManager.HasForceshield())
         {
