@@ -35,32 +35,19 @@ public class LaserProjectile : MonoBehaviour
         var enemy = other.GetComponentInParent<EnemyHealth>();
         if (enemy != null)
         {
-            if (GameManager.Instance.HasTwinBlasterTypeA())
-            {
-                enemy.TakeDamage(3);
-            }
-            else
-            {
-                enemy.TakeDamage(1);
-            }
+            enemy.TakeDamage(GameManager.Instance.HasTwinBlasterTypeA() ? 3 : 1);
             Deactivate();
+            return;
         }
-        else
+
+        var boss = other.GetComponentInParent<BossHealth>();
+        if (boss != null)
         {
-            var boss = other.GetComponentInParent<BossHealth>();
-            if (boss != null)
-            {
-                if (GameManager.Instance.HasTwinBlasterTypeA())
-                {
-                    enemy.TakeDamage(3);
-                }
-                else
-                {
-                    enemy.TakeDamage(1);
-                }
-                Deactivate();
-            }
+            boss.TakeDamage(GameManager.Instance.HasTwinBlasterTypeA() ? 3 : 1);
+            Deactivate();
+            return;
         }
+
     }
 
     public void Deactivate()
