@@ -1,18 +1,36 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SplashScreen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float _splashDuration = 0.25f;
+    [SerializeField] float _fadeInDuration = 0.25f;
+    [SerializeField] float _fadeOutDuration = 0.25f;
+
+    [SerializeField] Image logoImage;
+    [SerializeField] string _mainMenuName = "Main Menu";
+
+    private void Start()
     {
-        
+        StartCoroutine(ShowSplashScreen());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator ShowSplashScreen()
     {
-        
+        if (logoImage != null)
+        {
+            logoImage.canvasRenderer.SetAlpha(0.0f);
+            logoImage.CrossFadeAlpha(1.0f, _fadeInDuration, false);
+
+            yield return new WaitForSeconds(_splashDuration);
+
+            logoImage.CrossFadeAlpha(0.0f, _fadeOutDuration, false);
+        }
+
+        yield return new WaitForSeconds(_fadeOutDuration);
+
+        SceneManager.LoadScene(_mainMenuName);
     }
 }

@@ -1,18 +1,117 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Singleton pattern: una sola instancia de la clase (si existe una se usa la misma)
+    private static GameManager _instance;
+
+    // Player reference property
+    private GameObject _player;
+    public GameObject Player => _player != null ? _player : throw new Exception("Player not set yet!");
+    public int SelectedSkin { get; private set; }
+
+
+    // Para pasar info entre escenas
+    [SerializeField] static int _initalLives = 3;
+    [SerializeField] static int _actualLives = 3;
+    [SerializeField] static int _initialCollectibles = 0;
+    [SerializeField] static int _actualCollectibles = 0; // TODO a ser implementado
+
+    // SceneManagement
+    [SerializeField] string _sceneAfterGameOver = "SplashScreen";
+
+    public static GameManager Instance 
     {
-        
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<GameManager>();
+                if (_instance == null)
+                {
+                    GameObject go = new GameObject("GameManager");
+                    _instance = go.AddComponent<GameManager>();
+                }
+                DontDestroyOnLoad(_instance.gameObject);
+            }
+            return _instance;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            SelectedSkin = PlayerPrefs.GetInt("SelectedSkin", 1); // skin default
+        }
     }
+
+    public void ProcessPlayerDeath(int num)
+    {
+        if (_actualLives >= 1)
+        {
+            //ModifyGoosetavLivesAmount(num);
+        }
+        else
+        {
+            SceneManager.LoadScene(_sceneAfterGameOver);
+            RestoreGameValues();
+        }
+    }
+
+    public int GetLivesAmount() { return _actualLives; }
+
+
+    public void ModifyLivesAmount(int amount)
+    {
+        if (amount > 0)
+        {
+            _actualLives++;
+        }
+        else
+        {
+            _actualLives--;
+            var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentSceneIndex);
+        }
+    }
+
+    public int GetCollectiblesAmount() { return _initialCollectibles; }
+
+    public void ModifyCollectiblesAmount(int amount)
+    {
+        _initialCollectibles += amount;
+    }
+
+    public void RestoreGameValues()
+    {
+        _actualLives = _initalLives;
+    }
+
+    public void LoadNextScene(int buildIndex)
+    {
+        SceneManager.LoadScene(buildIndex);
+    }
+
+    public void SetPlayerReference(GameObject playerRef)
+    {
+        _player = playerRef;
+    }
+
+    public void SetSkin(int skinIndex)
+    {
+        SelectedSkin = skinIndex;
+        PlayerPrefs.SetInt("SelectedSkin", skinIndex);
+        PlayerPrefs.Save();
+    }
+
 }
