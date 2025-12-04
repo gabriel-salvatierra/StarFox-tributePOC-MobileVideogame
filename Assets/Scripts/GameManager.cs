@@ -17,12 +17,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] static int _initalLives = 3;
     [SerializeField] static int _actualLives = 3;
     [SerializeField] static int _currencyAmount;
-    [SerializeField] static int _staminaAmount; 
+    [SerializeField] static int _staminaAmount;
     [SerializeField] static int _maxStaminaAmount;
     //defaults
     [SerializeField] static int _currencyDefault = 0;
     [SerializeField] static int _staminaDefault = 10;
     [SerializeField] static int _maxStaminaDefault = 10;
+    [SerializeField] static bool _showRestoreGameValues = true;
+
 
     // Keys para PlayerPrefs
     private const string CurrencyKey = "Currency";
@@ -86,6 +88,7 @@ public class GameManager : MonoBehaviour
     public int GetCurrencyAmount() { return _currencyAmount; }
     public int GetStaminaAmount() { return _staminaAmount; }
     public int GetMaxStaminaAmount() { return _maxStaminaAmount; }
+    public bool GetShowRestoreGameValues() { return _showRestoreGameValues; }
 
 
     /*public void ModifyLivesAmount(int amount)
@@ -118,6 +121,7 @@ public class GameManager : MonoBehaviour
 
     public void RestoreGameValues()
     {
+        Debug.Log("Game values set to default");
         _currencyAmount = 0;
         _staminaAmount = _maxStaminaAmount;
 

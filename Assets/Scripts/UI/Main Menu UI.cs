@@ -13,10 +13,24 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private int _level1 = 2;
     [SerializeField] private int _level2 = 3;
 
+    [Header("Game Values Button")]
+    [SerializeField] private GameObject _restoreGameValuesButton;
 
     void Start()
     {
         ShowMainMenu();
+        CheckGameValuesButton();
+    }
+
+  public void CheckGameValuesButton()
+    {
+        if (GameManager.Instance.GetShowRestoreGameValues())
+        {
+            _restoreGameValuesButton.SetActive(true);
+        } else
+        {
+            _restoreGameValuesButton.SetActive(false);
+        }
     }
 
     public void PlayLevel1()
@@ -80,6 +94,11 @@ public class MainMenuUI : MonoBehaviour
         _shopPanel.SetActive(false);
         _levelSelectPanel.SetActive(false);
         _mainMenuPanel.SetActive(false);
+    }
+
+    public void RestoreGameValues()
+    {
+        GameManager.Instance.RestoreGameValues();
     }
 
     public void QuitGame()
