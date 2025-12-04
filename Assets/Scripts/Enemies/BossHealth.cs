@@ -14,7 +14,7 @@ public class BossHealth : MonoBehaviour
 
     [Header("On Defeat")]
     private const string _sceneOnDefeat = "Shop";
-    [SerializeField] private float _nextSceneDelay = 15f;
+    [SerializeField] private float _nextSceneDelay = 20f;
 
     [Header("Flash Effect")]
     [SerializeField] private Renderer enemyRenderer;
@@ -82,6 +82,7 @@ public class BossHealth : MonoBehaviour
 
         // Destroy boss object; TO DO explosion
         enemyRenderer.enabled = false;
+        GetComponentInChildren<Collider>().enabled = false;
 
         yield return new WaitForSeconds(_nextSceneDelay);
 

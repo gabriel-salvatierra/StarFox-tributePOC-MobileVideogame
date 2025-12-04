@@ -69,8 +69,6 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
 
-            SceneManager.sceneLoaded += OnSceneLoaded;
-
             _currencyAmount = PlayerPrefs.GetInt(CurrencyKey, _currencyDefault);
             _staminaAmount = PlayerPrefs.GetInt(StaminaKey, _staminaDefault);
             _maxStaminaAmount = PlayerPrefs.GetInt(MaxStaminaKey, _maxStaminaDefault);
@@ -79,30 +77,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        SetNextLevelAfterShop();
-    }
-
-    public void ProcessPlayerDeath(int num)
-    {
-        if (_actualLives >= 1)
-        {
-            //ModifyGoosetavLivesAmount(num);
-        }
-        else
-        {
-            SceneManager.LoadScene(_sceneAfterGameOver);
-            RestoreGameValues();
-        }
-    }
-
-    //public int GetLivesAmount() { return _actualLives; }
     public int GetCurrencyAmount() { return _currencyAmount; }
     public int GetStaminaAmount() { return _staminaAmount; }
     public int GetMaxStaminaAmount() { return _maxStaminaAmount; }
@@ -110,9 +84,14 @@ public class GameManager : MonoBehaviour
     public bool HasTwinBlasterTypeA() { return _hasTwinBlasterTypeA; }
     public bool HasForceshield() { return _hasForceshield; }
 
-    public void SetNextLevelAfterShop()
+    public void SetNextLevelAfterShop(int sceneBuildIndex)
     {
-        _nextLevelAfterShop = SceneManager.GetActiveScene().buildIndex + 1;
+        _nextLevelAfterShop = sceneBuildIndex;
+    }
+
+    public int GetNextLevelAfterShop()
+    {
+        return _nextLevelAfterShop;
     }
 
     public void ModifyCurrencyAmount(int amount)
