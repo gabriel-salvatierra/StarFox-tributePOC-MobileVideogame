@@ -531,6 +531,8 @@ MonoBehaviour:
   _soundPanel: {fileID: 4638974611777372745}
   _currencyIndicator: {fileID: 7205978801776388164}
   _staminaIndicator: {fileID: 7975431200478043624}
+  _currencyAmountValue: {fileID: 0}
+  _staminaIndicatorValue: {fileID: 0}
 --- !u!114 &4011701029031565648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,7 +594,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4292150807197580704
 MonoBehaviour:
   m_ObjectHideFlags: 0

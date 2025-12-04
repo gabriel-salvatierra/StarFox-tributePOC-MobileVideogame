@@ -20,6 +20,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI _currencyAmountValue;
     [SerializeField] TextMeshProUGUI _staminaIndicatorValue;
 
+    public static bool IsPaused { get; private set; }
+
     public void Pause()
     {
         SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
@@ -32,6 +34,17 @@ public class PauseMenu : MonoBehaviour
 
         UpdateCurrencyAmount();
         UpdateStaminaAmount();
+
+        Time.timeScale = 0f;
+        IsPaused = true;
+    }
+
+    public void TogglePause()
+    {
+        if (IsPaused)
+            Resume();
+        else
+            Pause();
     }
 
     public void UpdateCurrencyAmount()
@@ -56,6 +69,9 @@ public class PauseMenu : MonoBehaviour
         _soundPanel.SetActive(false);
         _currencyIndicator.SetActive(false);
         _staminaIndicator.SetActive(false);
+
+        Time.timeScale = 1f;
+        IsPaused = false;
     }
 
     public void ShowSoundPanel()
