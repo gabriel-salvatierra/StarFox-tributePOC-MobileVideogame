@@ -2,31 +2,41 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-
     [Header("References")]
-    [SerializeField] private Transform _muzzle;    
+    [SerializeField] private Transform _muzzle;
     [SerializeField] private LaserProjectile _laserPrefab;
 
     [Header("Settings")]
-    [SerializeField] private KeyCode _shootingKey = KeyCode.Mouse0;
     [SerializeField] private float _fireRate = 0.15f;
     [SerializeField] private bool _doubleLasers = false;
     [SerializeField] private float _sideOffset = 0.75f;
 
     private float _fireTimer = 0f;
+    private bool _isHoldingFire = false;
 
     private void Update()
     {
         _fireTimer -= Time.deltaTime;
 
-        if (Input.GetKey(_shootingKey) && _fireTimer <= 0f)
+        if (_isHoldingFire && _fireTimer <= 0f)
         {
+            SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.Blaster);
             Fire();
             _fireTimer = _fireRate;
         }
     }
 
-    private void Fire()
+    public void StartFiring()
+    {
+        _isHoldingFire = true;
+    }
+
+    public void StopFiring()
+    {
+        _isHoldingFire = false;
+    }
+
+    public void Fire()
     {
         if (_doubleLasers)
         {

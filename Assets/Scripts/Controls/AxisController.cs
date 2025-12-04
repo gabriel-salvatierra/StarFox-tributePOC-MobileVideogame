@@ -3,33 +3,51 @@ using UnityEngine.EventSystems;
 
 public class AxisController : Controller, IDragHandler, IEndDragHandler
 {
+    [SerializeField] private float _maxDistance = 80f; // UI units
+    private RectTransform _rectTransform;
+    private Vector2 _startPos;   // UI-local position
+    private Vector2 _dragDelta;
 
-    [SerializeField] private float _maxDistance = 15f;
-    private Vector3 _initialPos;
-    private Vector3 _dir;
+    private void Awake()
+    {
+        _rectTransform = GetComponent<RectTransform>();
+    }
 
     private void Start()
     {
-        _initialPos = transform.position;
+        _startPos = _rectTransform.anchoredPosition;
     }
 
     public override Vector3 GetMovementInput()
     {
-        // Remap Y on Z
-        _moveDir = new Vector3(_dir.x, 0f, _dir.y);
+        // UI uses x (horizontal) and y (vertical UI) > remap y to Z axis
+        _moveDir = new Vector3(_dragDelta.x, 0f, _dragDelta.y).normalized;
         return _moveDir;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        _dir = (Vector3)eventData.position - _initialPos;
-        transform.position = _initialPos + Vector3.ClampMagnitude(_dir, _maxDistance);
+        // Convert drag movement into local UI delta
+        Vector2 localMouse;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            _rectTransform.parent as RectTransform,
+            eventData.position,
+            eventData.pressEventCamera,
+            out localMouse
+        );
+
+        _dragDelta = localMouse - _startPos;
+
+        // Limit inside circle radius
+        _dragDelta = Vector2.ClampMagnitude(_dragDelta, _maxDistance);
+
+        // Move UI joystick handle
+        _rectTransform.anchoredPosition = _startPos + _dragDelta;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.position = _initialPos;
-        _dir = Vector3.zero;
+        _rectTransform.anchoredPosition = _startPos;
+        _dragDelta = Vector2.zero;
     }
-
 }

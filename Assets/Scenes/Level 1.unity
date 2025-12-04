@@ -3609,6 +3609,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496671549}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &514890871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8901291100385633348, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2120465885}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df82cd1685f77024e966ea8e8cad22a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &524165290
 GameObject:
   m_ObjectHideFlags: 0
@@ -7905,6 +7917,7 @@ GameObject:
   - component: {fileID: 1428745452}
   - component: {fileID: 1428745454}
   - component: {fileID: 1428745453}
+  - component: {fileID: 1428745455}
   m_Layer: 0
   m_Name: Arwing
   m_TagString: Untagged
@@ -7945,14 +7958,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0221fee1aba1dd4f966b0cf3284b24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _travelSpeed: 400
-  _moveSpeed: 25
+  _controller: {fileID: 514890871}
+  _moveSpeed: 20
   extraHorizontal: 0.1
   extraVertical: 0
+  _travelSpeed: 400
   _boostSpeed: 1000
   _boostDuration: 1
   _boostCoolDown: 3
-  _boostKey: 32
   _vfx: {fileID: 1630850878}
   _speedVignette: {fileID: 311634941}
   _tiltAmount: 50
@@ -7961,7 +7974,6 @@ MonoBehaviour:
   _noseTiltX: 0.75
   _fixedZPlane: 4
   _boostZPlane: 10
-  _currentZPlane: 0
   _ZPlaneSmoothness: 0.33
   _cinemachineDollyCart: {fileID: 264202751}
 --- !u!114 &1428745453
@@ -7992,10 +8004,36 @@ MonoBehaviour:
   _muzzle: {fileID: 1604609457}
   _laserPrefab: {fileID: 3790022746382785764, guid: 5f991e4211a7e98428bdb230e069845d,
     type: 3}
-  _shootingKey: 323
   _fireRate: 0.3
   _doubleLasers: 0
-  _sideOffset: 0.75
+  _sideOffset: 5.5
+--- !u!54 &1428745455
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428745450}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1436175534
 GameObject:
   m_ObjectHideFlags: 0
@@ -10308,6 +10346,41 @@ MonoBehaviour:
   maxHealth: 4
   enemyRenderer: {fileID: 1357716919}
   flashDuration: 0.1
+--- !u!1 &1728555092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1680919621997129115, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2120465885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1728555096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728555092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1428745452}
+          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+          m_MethodName: PressBoost
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1735964521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13250,6 +13323,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boost
       objectReference: {fileID: 0}
+    - target: {fileID: 3507998350938823161, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3507998350938823161, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3507998350938823161, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3507998350938823161, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3507998350938823161, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 51.03418
+      objectReference: {fileID: 0}
+    - target: {fileID: 3507998350938823161, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3507998350938823161, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4297658470152973358, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
         type: 3}
       propertyPath: m_Sprite
@@ -13397,11 +13505,72 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Inputs
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6579987240981038026, guid: 6c0930907981e7f47bfa10c4b9e9b5a1, type: 3}
+    - {fileID: 6985429657503917150, guid: 6c0930907981e7f47bfa10c4b9e9b5a1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 287347660974286944, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2120465887}
+    - targetCorrespondingSourceObject: {fileID: 1680919621997129115, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1728555096}
   m_SourcePrefab: {fileID: 100100000, guid: 6c0930907981e7f47bfa10c4b9e9b5a1, type: 3}
+--- !u!1 &2120465886 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 287347660974286944, guid: 6c0930907981e7f47bfa10c4b9e9b5a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2120465885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2120465887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120465886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1428745454}
+          m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+          m_MethodName: StartFiring
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1428745454}
+          m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+          m_MethodName: StopFiring
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
