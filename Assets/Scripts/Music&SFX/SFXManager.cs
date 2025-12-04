@@ -12,8 +12,10 @@ public class SFXManager : MonoBehaviour
         ButtonPress,
         Explosion,
         GoodLuck,
-        IncomingEnemy
-        // Add Categories here
+        IncomingEnemy,
+        TwinBlaster,
+        WeaponPowerUp
+        
     }
 
     // Pair each Enum with an SFXCategory

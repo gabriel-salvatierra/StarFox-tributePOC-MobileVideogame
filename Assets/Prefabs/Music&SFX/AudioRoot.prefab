@@ -134,6 +134,10 @@ MonoBehaviour:
     sfxCategory: {fileID: 11400000, guid: 3eb22da1d64ddcc4581a65a6b1b352de, type: 2}
   - categoryType: 4
     sfxCategory: {fileID: 11400000, guid: 7477a49ac8e3285448c6bef0c0058178, type: 2}
+  - categoryType: 5
+    sfxCategory: {fileID: 11400000, guid: eb7717faf95b37d42815547798026be8, type: 2}
+  - categoryType: 6
+    sfxCategory: {fileID: 11400000, guid: 4b2dab89c1623274586fe73e95e17547, type: 2}
 --- !u!82 &4832182396641146086
 AudioSource:
   m_ObjectHideFlags: 0

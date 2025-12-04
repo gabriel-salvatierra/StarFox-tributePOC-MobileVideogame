@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress, 0.5f);
         _pauseMenuPanel.SetActive(true);
         _currencyIndicator.SetActive(true);
         _staminaIndicator.SetActive(true);
@@ -60,7 +60,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress, 0.5f);
         _pauseButton.SetActive(true);
 
         _pauseMenuPanel.SetActive(false);
@@ -74,7 +74,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ShowSoundPanel()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress, 0.5f);
         _soundPanel.SetActive(true);
 
         _pauseMenuPanel.SetActive(false);
@@ -84,7 +84,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress, 0.5f);
         SceneManager.LoadScene(_mainMenuSceneName);
     }
 

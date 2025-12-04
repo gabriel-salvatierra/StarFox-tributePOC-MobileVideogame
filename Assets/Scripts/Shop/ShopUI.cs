@@ -43,7 +43,7 @@ public class ShopUI : MonoBehaviour
             _twinBlasterTypeAPanel.SetActive(true);
             _twinBlasterTypeAButton.SetActive(false);
 
-            SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck);
+            SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.TwinBlaster);
         }
     }
 
@@ -58,7 +58,7 @@ public class ShopUI : MonoBehaviour
             _forceshieldPanel.SetActive(true);
             _forceshieldButton.SetActive(false);
 
-            SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck);
+            SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.WeaponPowerUp);
         }
     }
 
@@ -94,7 +94,7 @@ public class ShopUI : MonoBehaviour
     {
         if (_gameManager.GetStaminaAmount() > 0)
         {
-            SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+            SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress,0.5f);
             _gameManager.ModifyStaminaAmount(-1);
             SceneManager.LoadScene(_gameManager.GetNextLevelAfterShop());
         }
@@ -106,7 +106,7 @@ public class ShopUI : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress, 0.5f);
         SceneManager.LoadScene(_mainMenuSceneName);
     }
 

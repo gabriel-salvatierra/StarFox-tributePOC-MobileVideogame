@@ -42,7 +42,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void PlayLevel1()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck,1f);
         SceneManager.LoadScene(_level1);
         if (int.TryParse(_level1Stamina.text, out int staminaConsumption))
         {
@@ -52,7 +52,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void PlayLevel2()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck,1f);
         SceneManager.LoadScene(_level2);
         if (int.TryParse(_level2Stamina.text, out int staminaConsumption))
         {
@@ -71,7 +71,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void BackToMenu()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress, 0.5f);
         _mainMenuPanel.SetActive(true);
 
         _levelSelectPanel.SetActive(false);
@@ -81,7 +81,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void ShowLevelSelect()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress, 0.5f);
         _levelSelectPanel.SetActive(true);
 
         _mainMenuPanel.SetActive(false);
@@ -91,7 +91,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void ShowShop()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress, 0.5f);
         _shopPanel.SetActive(true);
 
         _levelSelectPanel.SetActive(false);
@@ -104,7 +104,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void ShowSoundPanel()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress, 0.5f);
         _soundPanel.SetActive(true);
 
         _shopPanel.SetActive(false);
