@@ -4,6 +4,18 @@ using UnityEngine.Advertisements;
 public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     private const string RewardedAdID = "Rewarded_Android";
+    public bool isReady { get; private set; }
+
+    public void ShowAd()
+    {
+        if (!isReady)
+        {
+            Debug.Log("Ad not ready yet!");
+            return;
+        }
+
+        Advertisement.Show(RewardedAdID, this);
+    }
 
     public void LoadRewardedAd()
     {
@@ -18,6 +30,11 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 
     public void OnUnityAdsAdLoaded(string placementId)
     {
+        if (placementId == RewardedAdID)
+        {
+            isReady = true;
+            Debug.Log("Rewarded ad is READY.");
+        }
         Debug.Log(nameof(OnUnityAdsAdLoaded));
     }
 

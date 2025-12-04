@@ -5,12 +5,9 @@ public class AdsManager : MonoBehaviour
 {
     public static AdsManager Instance { get; private set; }
 
-    [SerializeField]
-    private BannerAds bannerController;
-    [SerializeField]
-    private InterstitialAds interstitialController;
-    [SerializeField]
-    private RewardedAds rewardedController;
+    [SerializeField] private BannerAds bannerController;
+    [SerializeField] private RewardedAds rewardedController;
+    [SerializeField] private InterstitialAds interstitialController;
 
     private void Awake()
     {
@@ -26,10 +23,9 @@ public class AdsManager : MonoBehaviour
 
         rewardedController.LoadRewardedAd();
 
-        StartCoroutine(DisplayBannerAd());
-
+        /*StartCoroutine(DisplayBannerAd());
         interstitialController.LoadInterstitialAd();
-        StartCoroutine(DisplayInterstitialAd());
+        StartCoroutine(DisplayInterstitialAd());*/
     }
 
     public void ShowRewardedAd()
