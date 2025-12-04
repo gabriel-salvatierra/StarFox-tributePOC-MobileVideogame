@@ -4,7 +4,7 @@ using UnityEngine.Advertisements;
 public class InitializeAds : MonoBehaviour, IUnityAdsInitializationListener
 {
     // Acá ponen su ID, el que les generó unity con su usuario.
-    private const string AndroidID = "5961689";
+    private const string AndroidID = "5996740";
     [SerializeField]
     private bool testMode = true;
 
