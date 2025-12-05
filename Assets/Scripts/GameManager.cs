@@ -1,6 +1,8 @@
 using System;
+using Unity.Services.RemoteConfig;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 public class GameManager : MonoBehaviour
 {
@@ -83,12 +85,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        for (int i = 0; i < _levelCompleted.Length; i++)
-            _levelCompleted[i] = false;
-    }
-
     public void SaveLevelProgress()
     {
         string data = "";
@@ -108,7 +104,7 @@ public class GameManager : MonoBehaviour
     public void LoadLevelProgress()
     {
         if (!PlayerPrefs.HasKey(LevelsCompletedKey))
-        {          
+        {
             for (int i = 0; i < _levelCompleted.Length; i++)
                 _levelCompleted[i] = false;
 
@@ -256,11 +252,10 @@ public class GameManager : MonoBehaviour
         _player = playerRef;
     }
 
-    public void SetSkin(int skinIndex)
+    public void UpdateMaxStamina(int maxStamina)
     {
-        SelectedSkin = skinIndex;
-        PlayerPrefs.SetInt("SelectedSkin", skinIndex);
-        PlayerPrefs.Save();
+        _maxStaminaDefault = maxStamina;
+        _maxStaminaAmount = maxStamina;
     }
 
 }
