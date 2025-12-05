@@ -165,6 +165,14 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    public void ResetAllLevels()
+    {
+        for (int i = 0; i < _levelCompleted.Length; i++)
+            _levelCompleted[i] = false;
+
+        SaveLevelProgress();
+    }
+
     public int GetCurrencyAmount() { return _currencyAmount; }
     public int GetStaminaAmount() { return _staminaAmount; }
     public int GetMaxStaminaAmount() { return _maxStaminaAmount; }
@@ -234,6 +242,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt(StaminaKey, _staminaAmount);
         DisableTwinBlasterTypeA();
         DisableForceshield();
+        ResetAllLevels();
         PlayerPrefs.Save();
     }
 

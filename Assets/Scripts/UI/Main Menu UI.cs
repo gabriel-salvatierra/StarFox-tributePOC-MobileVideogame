@@ -52,7 +52,16 @@ public class MainMenuUI : MonoBehaviour
         _level2Completed = GameManager.Instance.IsLevelCompleted(2);
 
         if (_level1Completed) { _level1DisabledPanel.SetActive(true); }
+        else
+        {
+            _level1DisabledPanel.SetActive(false);
+        }
+
         if (_level2Completed) { _level2DisabledPanel.SetActive(true); }
+        else
+        {
+            _level2DisabledPanel.SetActive(false);
+        }
     }
 
     public void PlayLevel1()
@@ -100,6 +109,8 @@ public class MainMenuUI : MonoBehaviour
 
     public void ShowLevelSelect()
     {
+        CheckCompletedLevels();
+
         SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress, 0.5f);
         _levelSelectPanel.SetActive(true);
 
