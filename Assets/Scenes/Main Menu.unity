@@ -1423,12 +1423,12 @@ PrefabInstance:
     - target: {fileID: 4475685730081994008, guid: 72d491500b0f9754e85be2aedbed91c4,
         type: 3}
       propertyPath: _level1
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4475685730081994008, guid: 72d491500b0f9754e85be2aedbed91c4,
         type: 3}
       propertyPath: _level2
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4651333389606341233, guid: 72d491500b0f9754e85be2aedbed91c4,
         type: 3}

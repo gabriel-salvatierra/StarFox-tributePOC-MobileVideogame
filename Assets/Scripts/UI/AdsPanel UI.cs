@@ -9,6 +9,9 @@ public class AdsPanelUI : MonoBehaviour
     [SerializeField] private GameObject _fullRewardsGO;
     [SerializeField] private GameObject _someRewardsGO;
 
+    [Header("Rewards")]
+    [SerializeField] private RewardedAds _rewardedAds;
+
     [Header("Full Rewards")]
     [SerializeField] TextMeshProUGUI _staminaFullTextAmount;
     [SerializeField] TextMeshProUGUI _currencyFullTextAmount;
@@ -20,17 +23,11 @@ public class AdsPanelUI : MonoBehaviour
     private string _shopSceneName = "Shop";
     private GameManager _gameManager;
 
-
     void Start()
     {
         _gameManager = GameManager.Instance;
         ShowIncomingTransmission();
-    }
-
-
-    void Update()
-    {
-
+        _rewardedAds.AssignAdsUI();
     }
 
     public void WatchAd()
@@ -45,6 +42,7 @@ public class AdsPanelUI : MonoBehaviour
 
     public void GiveFullReward()
     {
+        Debug.Log("Give Full Rewards");
         int staminaWon = int.Parse(_staminaFullTextAmount.text);
         int currencyWon = int.Parse(_currencyFullTextAmount.text);
 
@@ -75,6 +73,7 @@ public class AdsPanelUI : MonoBehaviour
 
     public void ShowFullRewards()
     {
+        Debug.Log("Show Full Rewards");
         _fullRewardsGO.SetActive(true);
 
         _incomingTransmissionGO.SetActive(false);
@@ -83,6 +82,7 @@ public class AdsPanelUI : MonoBehaviour
 
     public void ShowSomeRewards()
     {
+        Debug.Log("Give Some Rewards");
         _someRewardsGO.SetActive(true);
 
         _fullRewardsGO.SetActive(false);

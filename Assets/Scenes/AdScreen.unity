@@ -2206,6 +2206,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ff3a7263f51f64e8badd3d3ee758bb, type: 3}
+--- !u!114 &1378224676 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1378549687339886374, guid: 17ff3a7263f51f64e8badd3d3ee758bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1378224675}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dea1846f673d504d8ba5d0bf73a457b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1428694463
 GameObject:
   m_ObjectHideFlags: 0
@@ -4422,6 +4434,7 @@ MonoBehaviour:
   _incomingTransmissionGO: {fileID: 307395758}
   _fullRewardsGO: {fileID: 1677680239}
   _someRewardsGO: {fileID: 1265263384}
+  _rewardedAds: {fileID: 1378224676}
   _staminaFullTextAmount: {fileID: 1192876294}
   _currencyFullTextAmount: {fileID: 429899989}
   _staminaSomeTextAmount: {fileID: 1330278095}
