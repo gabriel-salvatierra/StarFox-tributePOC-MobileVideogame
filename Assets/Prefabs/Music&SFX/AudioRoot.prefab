@@ -138,6 +138,8 @@ MonoBehaviour:
     sfxCategory: {fileID: 11400000, guid: eb7717faf95b37d42815547798026be8, type: 2}
   - categoryType: 6
     sfxCategory: {fileID: 11400000, guid: 4b2dab89c1623274586fe73e95e17547, type: 2}
+  - categoryType: 7
+    sfxCategory: {fileID: 11400000, guid: 493fa8a600321e04795740598ce411fd, type: 2}
 --- !u!82 &4832182396641146086
 AudioSource:
   m_ObjectHideFlags: 0
@@ -286,7 +288,7 @@ MonoBehaviour:
   - track: 1
     clip: {fileID: 8300000, guid: 0510e7b3f4a91044fa19149535e7b2bb, type: 3}
   - track: 2
-    clip: {fileID: 8300000, guid: 0510e7b3f4a91044fa19149535e7b2bb, type: 3}
+    clip: {fileID: 8300000, guid: ec0809bb14a3e814988c7c621896659c, type: 3}
   - track: 3
     clip: {fileID: 8300000, guid: 03bf0b9bc6f1f154bb37dede8bcc1c9f, type: 3}
   - track: 4

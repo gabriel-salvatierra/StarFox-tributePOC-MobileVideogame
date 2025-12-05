@@ -16,13 +16,16 @@ public class GameManager : MonoBehaviour
 
 
     [Header("Game Values")]
+    [SerializeField] int _playerMaxHealthAmount = 5;
     [SerializeField] int _initalLives = 3;
     [SerializeField] int _actualLives = 3;
     [SerializeField] int _currencyAmount;
     [SerializeField] int _staminaAmount;
     [SerializeField] int _maxStaminaAmount;
+    [SerializeField] int _playerMaxHealth;
 
     [Header("Defaults")]
+    [SerializeField] int _playerMaxHealthDefault = 5;
     [SerializeField] int _currencyDefault = 0;
     [SerializeField] int _staminaDefault = 10;
     [SerializeField] int _maxStaminaDefault = 10;
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
     private const string TwinBlasterTypeA = "TwinBlasterTypeA";
     private const string Forceshield = "Forceshield";
     private const string LevelsCompletedKey = "LevelsCompleted";
+    private const string PlayerMaxHealthKey = "PlayerMaxHealth";
 
     // SceneManagement
     [SerializeField] string _sceneAfterGameOver = "SplashScreen";
@@ -76,6 +80,7 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
 
+            _playerMaxHealthAmount = PlayerPrefs.GetInt(PlayerMaxHealthKey, _playerMaxHealthDefault);
             _currencyAmount = PlayerPrefs.GetInt(CurrencyKey, _currencyDefault);
             _staminaAmount = PlayerPrefs.GetInt(StaminaKey, _staminaDefault);
             _maxStaminaAmount = PlayerPrefs.GetInt(MaxStaminaKey, _maxStaminaDefault);
@@ -169,6 +174,7 @@ public class GameManager : MonoBehaviour
         SaveLevelProgress();
     }
 
+    public int GetPlayerMaxHealth() { return _playerMaxHealthAmount; }
     public int GetCurrencyAmount() { return _currencyAmount; }
     public int GetStaminaAmount() { return _staminaAmount; }
     public int GetMaxStaminaAmount() { return _maxStaminaAmount; }

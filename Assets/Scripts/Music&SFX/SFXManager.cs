@@ -14,7 +14,8 @@ public class SFXManager : MonoBehaviour
         GoodLuck,
         IncomingEnemy,
         TwinBlaster,
-        WeaponPowerUp
+        WeaponPowerUp,
+        Hit
         
     }
 
