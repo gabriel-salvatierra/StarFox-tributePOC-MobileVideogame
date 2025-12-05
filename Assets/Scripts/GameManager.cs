@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     private const string MaxStaminaKey = "MaxStamina";
     private const string TwinBlasterTypeA = "TwinBlasterTypeA";
     private const string Forceshield = "Forceshield";
+    private const string LevelsCompletedKey = "LevelsCompleted";
 
     // SceneManagement
     [SerializeField] string _sceneAfterGameOver = "SplashScreen";
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
             _maxStaminaAmount = PlayerPrefs.GetInt(MaxStaminaKey, _maxStaminaDefault);
             _hasTwinBlasterTypeA = PlayerPrefs.GetInt(TwinBlasterTypeA, 0) == 1;
             _hasForceshield = PlayerPrefs.GetInt(Forceshield, 0) == 1;
+            LoadLevelProgress();
         }
     }
 
@@ -87,12 +89,70 @@ public class GameManager : MonoBehaviour
             _levelCompleted[i] = false;
     }
 
+    public void SaveLevelProgress()
+    {
+        string data = "";
+
+        for (int i = 0; i < _levelCompleted.Length; i++)
+        {
+            data += (_levelCompleted[i] ? "1" : "0");
+
+            if (i < _levelCompleted.Length - 1)
+                data += ",";
+        }
+
+        PlayerPrefs.SetString(LevelsCompletedKey, data);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadLevelProgress()
+    {
+        if (!PlayerPrefs.HasKey(LevelsCompletedKey))
+        {          
+            for (int i = 0; i < _levelCompleted.Length; i++)
+                _levelCompleted[i] = false;
+
+            return;
+        }
+
+        string data = PlayerPrefs.GetString(LevelsCompletedKey);
+        string[] tokens = data.Split(',');
+
+        for (int i = 0; i < _levelCompleted.Length; i++)
+        {
+            if (i < tokens.Length)
+                _levelCompleted[i] = tokens[i] == "1";
+            else
+                _levelCompleted[i] = false;
+        }
+    }
+
     public void MarkLevelAsCompleted(int level)
     {
         int index = level - 1;
 
         if (index >= 0 && index < _levelCompleted.Length)
+        {
             _levelCompleted[index] = true;
+            SaveLevelProgress();
+        }
+    }
+
+    public void MarkLevelAsIncomplete(int level)
+    {
+        int index = level - 1;
+
+        if (index >= 0 && index < _levelCompleted.Length)
+        {
+            _levelCompleted[index] = false;
+            SaveLevelProgress();
+        }
+    }
+
+    public bool IsLevelCompleted(int level)
+    {
+        int index = level - 1;
+        return (index >= 0 && index < _levelCompleted.Length) && _levelCompleted[index];
     }
 
     public bool AreAllLevelsCompleted()

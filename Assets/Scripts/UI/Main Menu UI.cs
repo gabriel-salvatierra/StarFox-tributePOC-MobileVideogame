@@ -10,11 +10,16 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject _shopPanel;
     [SerializeField] private GameObject _soundPanel;
 
-    [Header("Level Indexes")]
-    [SerializeField] private int _level1 = 4;
+    [Header("Levels")]
+    [SerializeField] private int _level1Index = 4;
+    [SerializeField] private bool _level1Completed;
     [SerializeField] private TextMeshProUGUI _level1Stamina;
-    [SerializeField] private int _level2 = 5;
+    [SerializeField] private GameObject _level1DisabledPanel;
+
+    [SerializeField] private int _level2Index = 5;
+    [SerializeField] private bool _level2Completed;
     [SerializeField] private TextMeshProUGUI _level2Stamina;
+    [SerializeField] private GameObject _level2DisabledPanel;
 
     [Header("Game Values Button")]
     [SerializeField] private GameObject _restoreGameValuesButton;
@@ -26,6 +31,7 @@ public class MainMenuUI : MonoBehaviour
         _shopUI = GetComponent<ShopUI>();
         ShowMainMenu();
         CheckGameValuesButton();
+        CheckCompletedLevels();
     }
 
     public void CheckGameValuesButton()
@@ -40,10 +46,21 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
+    public void CheckCompletedLevels()
+    {
+        _level1Completed = GameManager.Instance.IsLevelCompleted(1);
+        _level2Completed = GameManager.Instance.IsLevelCompleted(2);
+
+        if (_level1Completed) { _level1DisabledPanel.SetActive(true); }
+        if (_level2Completed) { _level2DisabledPanel.SetActive(true); }
+    }
+
     public void PlayLevel1()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck,1f);
-        SceneManager.LoadScene(_level1);
+        if (_level1Completed) { return; }
+
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck, 1f);
+        SceneManager.LoadScene(_level1Index);
         if (int.TryParse(_level1Stamina.text, out int staminaConsumption))
         {
             GameManager.Instance.ModifyStaminaAmount(-staminaConsumption);
@@ -52,8 +69,10 @@ public class MainMenuUI : MonoBehaviour
 
     public void PlayLevel2()
     {
-        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck,1f);
-        SceneManager.LoadScene(_level2);
+        if (_level2Completed) { return; }
+
+        SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.GoodLuck, 1f);
+        SceneManager.LoadScene(_level2Index);
         if (int.TryParse(_level2Stamina.text, out int staminaConsumption))
         {
             GameManager.Instance.ModifyStaminaAmount(-staminaConsumption);
