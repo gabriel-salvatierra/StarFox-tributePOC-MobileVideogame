@@ -5591,6 +5591,7 @@ MonoBehaviour:
   maxHealth: 20
   _currencyOnDefeat: 15
   _sceneOnDefeat: AdScreen
+  _levelNumber: 1
   _nextSceneDelay: 5
   enemyRenderer: {fileID: 2072819507}
   flashDuration: 0.1

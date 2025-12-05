@@ -30,6 +30,7 @@ public class ShopUI : MonoBehaviour
     {
         CheckTwinBlasterTypeA();
         CheckForceshield();
+        CheckNextMissionButton();
     }
 
     public void BuyTwinBlasterTypeA()
@@ -92,13 +93,17 @@ public class ShopUI : MonoBehaviour
 
     public void NextMission()
     {
-        if (_gameManager.GetStaminaAmount() > 0)
+        if (_gameManager.GetStaminaAmount() > 0 && !_gameManager.AreAllLevelsCompleted())
         {
             SFXManager.Instance.PlaySFX(SFXManager.SFXCategoryType.ButtonPress,0.5f);
             _gameManager.ModifyStaminaAmount(-1);
             SceneManager.LoadScene(_gameManager.GetNextLevelAfterShop());
         }
-        else
+    }
+
+    public void CheckNextMissionButton()
+    {
+       if (_gameManager.AreAllLevelsCompleted() || _gameManager.GetStaminaAmount() <= 0)
         {
             _nextLevelImageButton.color = Color.black;
         }

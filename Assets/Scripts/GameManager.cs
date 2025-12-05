@@ -14,16 +14,20 @@ public class GameManager : MonoBehaviour
 
 
     [Header("Game Values")]
-    [SerializeField] static int _initalLives = 3;
-    [SerializeField] static int _actualLives = 3;
-    [SerializeField] static int _currencyAmount;
-    [SerializeField] static int _staminaAmount;
-    [SerializeField] static int _maxStaminaAmount;
+    [SerializeField] int _initalLives = 3;
+    [SerializeField] int _actualLives = 3;
+    [SerializeField] int _currencyAmount;
+    [SerializeField] int _staminaAmount;
+    [SerializeField] int _maxStaminaAmount;
+
     [Header("Defaults")]
-    [SerializeField] static int _currencyDefault = 0;
-    [SerializeField] static int _staminaDefault = 10;
-    [SerializeField] static int _maxStaminaDefault = 10;
-    [SerializeField] static bool _showRestoreGameValues = true;
+    [SerializeField] int _currencyDefault = 0;
+    [SerializeField] int _staminaDefault = 10;
+    [SerializeField] int _maxStaminaDefault = 10;
+    [SerializeField] bool _showRestoreGameValues = true;
+
+    [Header("Levels")]
+    [SerializeField] bool[] _levelCompleted = new bool[2];
 
     [Header("Shop")]
     [SerializeField] private bool _hasTwinBlasterTypeA = false;
@@ -75,6 +79,30 @@ public class GameManager : MonoBehaviour
             _hasTwinBlasterTypeA = PlayerPrefs.GetInt(TwinBlasterTypeA, 0) == 1;
             _hasForceshield = PlayerPrefs.GetInt(Forceshield, 0) == 1;
         }
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < _levelCompleted.Length; i++)
+            _levelCompleted[i] = false;
+    }
+
+    public void MarkLevelAsCompleted(int level)
+    {
+        int index = level - 1;
+
+        if (index >= 0 && index < _levelCompleted.Length)
+            _levelCompleted[index] = true;
+    }
+
+    public bool AreAllLevelsCompleted()
+    {
+        for (int i = 0; i < _levelCompleted.Length; i++)
+        {
+            if (!_levelCompleted[i])
+                return false;
+        }
+        return true;
     }
 
     public int GetCurrencyAmount() { return _currencyAmount; }

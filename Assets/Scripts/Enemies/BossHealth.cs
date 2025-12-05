@@ -14,6 +14,7 @@ public class BossHealth : MonoBehaviour
 
     [Header("On Defeat")]
     [SerializeField] private string _sceneOnDefeat = "AdScreen";
+    [SerializeField] private int _levelNumber;
     [SerializeField] private float _nextSceneDelay = 20f;
 
     [Header("Flash Effect")]
@@ -69,6 +70,9 @@ public class BossHealth : MonoBehaviour
 
     private IEnumerator DieRoutine()
     {
+        // Mark Level as Completed
+        GameManager.Instance.MarkLevelAsCompleted(_levelNumber);
+
         // Play UI message
         if (missionCompleteUI != null)
             missionCompleteUI.PlayMessage();
