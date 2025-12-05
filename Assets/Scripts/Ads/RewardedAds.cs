@@ -3,6 +3,8 @@ using UnityEngine.Advertisements;
 
 public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
+    [SerializeField] private AdsPanelUI _adsPanelUI;
+
     private const string RewardedAdID = "Rewarded_Android";
     public bool isReady { get; private set; }
 
@@ -58,14 +60,17 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         if (showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
             Debug.Log("Full rewards");
+            _adsPanelUI.GiveFullReward();
         }
         else if (showCompletionState.Equals(UnityAdsShowCompletionState.SKIPPED))
         {
             Debug.Log("Some rewards");
+            _adsPanelUI.GiveSomeReward();
         }
         else
         {
             Debug.Log("Error");
+            _adsPanelUI.GiveFullReward();
         }
     }
 
