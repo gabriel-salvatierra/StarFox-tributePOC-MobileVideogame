@@ -2186,6 +2186,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1378549687339886374, guid: 17ff3a7263f51f64e8badd3d3ee758bb,
+        type: 3}
+      propertyPath: _adsPanelUI
+      value: 
+      objectReference: {fileID: 8705630905600870616}
     - target: {fileID: 6261807013501243609, guid: 17ff3a7263f51f64e8badd3d3ee758bb,
         type: 3}
       propertyPath: testMode

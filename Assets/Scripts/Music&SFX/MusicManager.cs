@@ -12,7 +12,8 @@ public class MusicManager : MonoBehaviour
         Level1,
         Level2,
         LevelClear,
-        Shop
+        Shop,
+        AdScreen
     }
 
     // Pair a track enum with an AudioClip
@@ -91,6 +92,9 @@ public class MusicManager : MonoBehaviour
                 break;
             case "Shop":
                 PlayTrack(MusicTrack.Shop);
+                break;
+            case "AdScreen":
+                PlayTrack(MusicTrack.AdScreen);
                 break;
             default:
                 FadeOutAndStop(0.5f);

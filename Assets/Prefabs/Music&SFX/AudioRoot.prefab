@@ -291,6 +291,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 03bf0b9bc6f1f154bb37dede8bcc1c9f, type: 3}
   - track: 4
     clip: {fileID: 8300000, guid: 1a2a310d99d1a794b963db3cfac24a9d, type: 3}
+  - track: 5
+    clip: {fileID: 8300000, guid: 2d0253a9fc1f05c40b45ce7bdaf26d5b, type: 3}
   defaultVolume: 0.3
   defaultFadeToNewTrack: 0.5
 --- !u!82 &3492263539101630444
