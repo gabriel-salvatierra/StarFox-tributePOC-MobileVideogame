@@ -11,9 +11,9 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject _soundPanel;
 
     [Header("Level Indexes")]
-    [SerializeField] private int _level1 = 3;
+    [SerializeField] private int _level1 = 4;
     [SerializeField] private TextMeshProUGUI _level1Stamina;
-    [SerializeField] private int _level2 = 4;
+    [SerializeField] private int _level2 = 5;
     [SerializeField] private TextMeshProUGUI _level2Stamina;
 
     [Header("Game Values Button")]
