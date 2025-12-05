@@ -65,17 +65,17 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         if (showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
             Debug.Log("# Full rewards");
-            _adsPanelUI.GiveFullReward();
+            FindAnyObjectByType<AdsPanelUI>().GiveFullReward();
         }
         else if (showCompletionState.Equals(UnityAdsShowCompletionState.SKIPPED))
         {
             Debug.Log("# Some rewards");
-            _adsPanelUI.GiveSomeReward();
+            FindAnyObjectByType<AdsPanelUI>().GiveSomeReward();
         }
         else
         {
             Debug.Log("Error");
-            _adsPanelUI.GiveFullReward();
+            FindAnyObjectByType<AdsPanelUI>().GiveFullReward();
         }
     }
 
