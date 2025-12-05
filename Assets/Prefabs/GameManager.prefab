@@ -44,3 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6cf0e2a11136040adff50fdaa729d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerMaxHealthAmount: 5
+  _initalLives: 3
+  _actualLives: 3
+  _currencyAmount: 0
+  _staminaAmount: 0
+  _maxStaminaAmount: 0
+  _playerMaxHealth: 0
+  _playerMaxHealthDefault: 5
+  _currencyDefault: 0
+  _staminaDefault: 10
+  _maxStaminaDefault: 10
+  _showRestoreGameValues: 1
+  _levelCompleted: 0000
+  _hasTwinBlasterTypeA: 0
+  _hasForceshield: 0
+  _sceneAfterGameOver: SplashScreen
+  _nextLevelAfterShop: 0
