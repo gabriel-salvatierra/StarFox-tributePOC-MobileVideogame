@@ -2,7 +2,7 @@
 
 3D Unity mobile game based on StarFox
 
-The objective of this project was to delevop and understand the basics of:
+### The objective of this project was to delevop and understand the basics of:
 1. Mobile development 
 2. Stamina system
 3. Shop
